@@ -6,38 +6,39 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href = "{{ url_for('static', filename = 'css/default.css') }}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.content').height(window.outerHeight);
+		});
+	</script>
 	{% endblock %}
 </head>
 <body>
 	<header>
-		<nav class = "navbar navbar-default">
-			<div class = "display">
-				<div class = "container-fluid">
-					<div class = "navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">sCloud biz</a>
-					</div>
-				</div>
-			</div>
-		</nav>
+		{% if userData %}
+			{% include "layout/header_login.html" %}
+		{% else %}
+			{% include "layout/header_no_login.html" %}
+		{% endif %}
 	</header>
-	<div class = "content">
-		<div class = "display">
-			{% block content %} {% endblock%}
+	<section class = "content">
+		<div class = "container">
+			<aside>
+				{% block side %} {% endblock %}
+			</aside>
+			<article class = "content">
+				{% block content %} {% endblock%}
+			</article>
 		</div>
-	</div>
+	</section>
 	<footer>
 		<div class ="footer_group">
+			asdfasfas
 		</div>
 		{% block footer %} {% endblock%}
 	</footer>

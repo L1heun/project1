@@ -1,0 +1,43 @@
+{% extends "layout/born.html" %}
+{% block title %} sColud biz - login{% endblock %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href = "{{ url_for('static', filename = 'css/login.css') }}">
+	<script src="{{ url_for('static', filename='js/imgLiquid-min.js')}}"></script>
+	<script>
+		$(document).ready(function() {
+			$(".imgLiquidFill").imgLiquid();
+		});
+	</script>
+	<style>
+
+	</style>
+{% endblock %}
+{% block content %}
+	<div class = "login-form">
+		<div class = "thumb-img">
+			<div class = "imgLiquidFill imgLiquid imgLiquid_bgSize imgLiquid_ready">
+				<img src = "{{ url_for('static', filename = 'res/cloud1.png') }}">
+			</div>
+		</div>
+
+		<form action = "{{ url_for('login') }}" method = "POST">
+			<div class = "form-custom">
+				<div class = "form-group">
+					<h3 style = "text-align : left">로그인</h3>
+					<p style = "text-align : right">또는 <a href="{{ url_for('join') }}">계정만들기</a></p>
+				</div>
+				<div class = "form-group">
+					<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="이메일">
+				</div>
+				<div class = "form-group">
+					<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="비밀번호">
+				</div>
+				<div class = "form-group">
+					<p style = "text-align : left"><a href="#">비밀번호를 잊으셨나요?</a></p>
+					<input type="submit" class="btn btn-primary" id="inputSubmit" value = "로그인" style = "float : right">
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
