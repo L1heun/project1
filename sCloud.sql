@@ -2,6 +2,7 @@ create table user_account  (
   user_idx INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_id VARCHAR(64) NOT NULL UNIQUE KEY,
   user_passwd VARCHAR(255) NOT NULL,
+  user_token VARCHAR(255),
   user_signup_time DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
   user_type ENUM('admin',  'normal') NOT NULL DEFAULT 'normal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

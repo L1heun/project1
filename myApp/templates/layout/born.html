@@ -20,7 +20,7 @@
 </head>
 <body>
 	<header>
-		{% if userData %}
+		{% if loginData %}
 			{% include "layout/header_login.html" %}
 		{% else %}
 			{% include "layout/header_no_login.html" %}
@@ -38,7 +38,7 @@
 	</section>
 	<footer>
 		<div class ="footer_group">
-			asdfasfas
+			<p>Copyright © Seo Dong Myong. All Rights Reserved.</p>
 		</div>
 		{% block footer %} {% endblock%}
 	</footer>

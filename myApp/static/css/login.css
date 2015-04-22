@@ -1,17 +1,9 @@
 @charset utf-8;
 
-.container {
-	top : 20%;
-	position : relative;
-}
-
-.content {
-	height : 768px;
-	margin : 0 auto;
-}
-
 .login-form {
 	width : 100%;
+	top: 20%;
+	position: relative;
 }
 
 .login-form .thumb-img {

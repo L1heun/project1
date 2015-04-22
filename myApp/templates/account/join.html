@@ -7,6 +7,10 @@
 	<script>
 		$(document).ready(function() {
 			$(".imgLiquidFill").imgLiquid();
+			$('.content').height(window.innerHeight);
+		});
+		$(window).resize(function() {
+			$('.content').height(window.innerHeight);
 		});
 	</script>
 {% endblock %}
