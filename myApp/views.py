@@ -14,7 +14,11 @@ def Render(template) :
 
 @app.route('/')
 def index() :
-	return Render('index.html')
+	result = control.getAccountInfo()
+	result = json.loads(result)
+	if result['result'] != -1 :
+		return redirect(url_for("home"))
+	return render_template('index.html')
 
 @app.route("/logout")
 def logout() :
@@ -36,7 +40,7 @@ def login() :
 		if result['result'] == -1 :
 			result = "<script>alert('계정 혹은 패스워드가 잘못되었습니다.'); history.back(-1); </script>"
 		elif result['result'] == 1:
-			result = redirect(url_for("index"))
+			result = redirect(url_for("home"))
 		return result
 
 	return Render('account/login.html')
@@ -53,8 +57,12 @@ def join() :
 		if result['result'] == -1 :
 			result = "<script>alert('이미 존재하는 계정입니다'); history.back(-1); </script>"
 		elif result['result'] == 1 :
-			result = redirect(url_for("index"))
+			result = redirect(url_for("home"))
 		return result
 
 	return Render('account/join.html')
+
+@app.route('/home')
+def home() :
+	return Render('service/home.html')
 

@@ -3,6 +3,7 @@
 {% block head %}
 	{{ super() }}
 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 	<script src="{{ url_for('static', filename='js/imgLiquid-min.js')}}"></script>
 	<script>
 		$(document).ready(function() {
@@ -15,64 +16,37 @@
 		})
 	</script>
 	<style>
-		.home-overlay {
-			background-color: rgba(44, 62, 80, 0.3);
-			background-image: url("{{ url_for('static', filename = 'res/pattern.png')}}");
-			background-repeat: repeat;
-			height: 100%;
-			width: 100%;
-			left: 0;
-			z-index: 0;
-			position : absolute;
-			top : 50px;
-		}
-		.content {
-			background: url("{{ url_for('static', filename = 'res/main_back_ground.jpg') }}");
-			background-color: #222;
-			background-attachment: fixed;
-			background-repeat: no-repeat;
-			background-position: 50% 50%;
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			background-size: cover;
-			padding: 0;
-			height : 100%;
-		}
-		.navbar {
-			margin-bottom : 0;
-		}
-		.intro {
-			position: absolute;
-			width: 100%;
-			top: 50%;
-			left: 0;
-			text-align: center;
-			-webkit-transform: translate(0%, -50%);
-			-moz-transform: translate(0%, -50%);
-			-ms-transform: translate(0%, -50%);
-			-o-transform: translate(0%, -50%);
-			transform: translate(0%, -50%);
-			padding: 0 15px;
-		}
-		.intro .start {
-			font-family: Raleway, "Times New Roman", Times, sans-serif;
-			font-size: 16px;
-			font-style: normal;
-			text-transform: none;
-			margin: 15px 0;
-			color : #fff;
-			z-index : 23456789;
-		}
-		.intro h1 {
-			  font-weight: 800;
-			  color : #fff;
-		}
-		.intro .start a {
-			margin : 15px auto auto auto;
-			width : 15%;
-			font-size : 15px;
-		}
+	.home-overlay {
+		background-color: rgba(44, 62, 80, 0.3);
+		background-image: url("{{ url_for('static', filename = 'res/pattern.png')}}");
+		background-repeat: repeat;
+		height: 100%;
+		width: 100%;
+		left: 0;
+		z-index: 0;
+		position : absolute;
+		top : 50px;
+	}
+	.content {
+		background: url("{{ url_for('static', filename = 'res/main_back_ground.jpg') }}");
+		background-color: #222;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		padding: 0;
+		height : 100%;
+	}
+	.btn-custom {
+		border : 1px solid #fff;
+		color : #fff;
+	}
+	.btn-custom:hover {
+		background-color : #e4e4e4;
+	}
 	</style>
 {% endblock %}
 {% block content %}
@@ -81,6 +55,6 @@
 		<div class = "intro">
 			<div class="start welcome">Welcome to sCloud Biz Club</div>
 			<h1>Everyone can use this sCloud Biz</h1>
-			<div class="start"><a class = "btn btn-primary" href = "{{ url_for('join') }}">Join</a></div>
+			<div class="start"><a class = "btn btn-custom" href = "{{ url_for('join') }}">Join</a></div>
 		</div>
 {% endblock %}

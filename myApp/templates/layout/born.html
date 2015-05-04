@@ -11,6 +11,7 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='js/upload-handler.js') }}"></script>
 	<script>
 		$(document).ready(function() {
 			$('.content').height(window.outerHeight);
@@ -28,18 +29,15 @@
 	</header>
 	<section class = "content">
 		<div class = "container">
-			<aside>
-				{% block side %} {% endblock %}
-			</aside>
+			<aside>{% block side %} {% endblock %}</aside>
 			<article class = "content">
 				{% block content %} {% endblock%}
 			</article>
 		</div>
 	</section>
-	<footer>
-		<div class ="footer_group">
-			<p>Copyright © Seo Dong Myong. All Rights Reserved.</p>
-		</div>
-		{% block footer %} {% endblock%}
-	</footer>
+	{% include "layout/footer.html" %}
+
+	<div class = "modal-custom">
+		{% include 'service/file_upload.html' %}
+	</div>
 </body>

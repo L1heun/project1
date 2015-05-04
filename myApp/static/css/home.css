@@ -1,0 +1,50 @@
+.file-list i, .nav-custom i{
+	font-size : 15px;
+	text-align : left;
+	width :100%;
+	margin-bottom : 1em;
+}
+body {
+	background-color : #fff;
+}
+.nav-custom {
+	margin-top : 3em;
+}
+.nav-header {
+	width : 100%;
+	font-weight: 600;
+	font-size: 13px;
+	color: #aaa;
+	text-align : left;
+}
+.file-list i:hover {
+	cursor : pointer;
+}
+.table {
+	width : 75%;
+}
+.table thead tr th {
+	color : #aaa;
+	margin-bottom: 0px;
+	text-align: left;
+	font-size: 12px;
+	text-align : left;
+}
+.table tbody td {
+	text-align : left;
+	background-color : #fff;
+}
+aside {
+	position: fixed;
+	right : 0;
+	
+}
+.thumb_nail {
+	border: none;
+	height: 31px;
+	width: 31px;
+	margin-top: 0px;
+	margin-right: 13px;
+	margin-left: 1px;
+	float : left;
+}

@@ -1,0 +1,66 @@
+{% extends "layout/born.html" %}
+{% block title %} sColud biz - Home{% endblock %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href = "{{ url_for('static', filename = 'css/home.css') }}">
+	<script src="{{ url_for('static', filename='js/imgLiquid-min.js')}}"></script>
+	<script>
+		$(document).ready(function() {
+			$(".imgLiquidFill").imgLiquid();
+			$('.content').height(window.innerHeight);
+
+			$("#file-upload").click(function() {
+				$('#file-modal').modal('show');
+
+				var obj = $("#dragandrophandler");
+				obj.on('dragenter', function(e) {
+					e.stopPropagation();
+				    e.preventDefault();
+				    $(this).css('border', '2px solid #0B85A1');
+				})
+			})
+		});
+		$(window).resize(function() {
+			$('.content').height(window.innerHeight);
+		});
+	</script>
+{% endblock %}
+{% block side %}
+	<div class = 'file-list'>
+		<p class = 'nav-header'>메뉴 바로보기</p>
+		<i class="fa fa-file fa-4"> 파일</i>
+		<i class="fa fa-file-image-o"> 이미지</i>
+		<i class="fa fa-file-video-o"> 동영상</i>
+		<i class="fa fa-share-alt"> 공유 <span class="badge">0</span></i>
+		<i class="fa fa-paperclip"> 링크 <span class="badge">0</span></i>
+	</div>
+	<div class = 'nav-custom'>
+		<p class = 'nav-header'>다음으로 바로가기</p>
+		<i class="fa fa-book"><a href = 'http://neo.lnovel.kr/'> 네오노벨</a></i>
+	</div>
+{% endblock %}
+{% block content %}
+	
+<table class = 'table table-striped table-hover'>
+	<thead>
+		<tr>
+			<th>이름</th>
+			<th>유형</th>
+			<th>수정된 날짜</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<div class = "imgLiquidFill imgLiquid imgLiquid_bgSize imgLiquid_ready thumb_nail">
+					<img src = 'http://scripteden.com/previews/Clean/assets/images/item-1.jpg'>
+				</div>
+				<p style = 'float : left; padding-top : 5px;'> 파일이름</p>
+			</td>
+			<td style = "padding-top : 15px;">동영상</td>
+			<td style = "padding-top : 15px;">2014/07/01 12시 30분</td>
+		</tr>
+	</tbody>
+</table>
+
+{% endblock %}
