@@ -30,7 +30,7 @@ def logout() :
 		result = "<script>alert('로그아웃에 실패하였습니다'); history.back(-1); </script>"
 	return result
 
-@app.route('/login', methods = ['POST', 'GET'])
+@app.route('/login', methods = ['POST'])
 def login() :
 	if request.method == 'POST':
 		userId = request.form['inputEmail']
@@ -43,9 +43,9 @@ def login() :
 			result = redirect(url_for("home"))
 		return result
 
-	return Render('account/login.html')
+	return redirect(url_for("home"))
 
-@app.route('/join', methods = ['POST', 'GET'])
+@app.route('/join', methods = ['POST'])
 def join() :
 	if request.method == 'POST':
 		userId = request.form['inputEmail']
@@ -60,7 +60,7 @@ def join() :
 			result = redirect(url_for("home"))
 		return result
 
-	return Render('account/join.html')
+	return redirect(url_for("home"))
 
 @app.route('/home')
 def home() :

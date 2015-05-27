@@ -12,9 +12,14 @@
 			</div>
 			<div class = "collapse navbar-collapse" id="custom-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li style = "font-size : 19px"><a href="{{ url_for('login') }}"><i class="fa fa-key"></i></a></li>
+					<li style = "font-size : 19px" id = "login"><a href="#"><i class="fa fa-key"></i></a></li>
 				</ul>	
 			</div>
 		</div>
 	</div>
 </nav>
+<script>
+	$("#login").click(function() {
+		$('#login-modal').modal('show')
+	});
+</script>

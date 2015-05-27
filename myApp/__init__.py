@@ -10,7 +10,11 @@ db = SQLAlchemy(app)
 
 @app.errorhandler(404)
 def not_found(error) :
-	return render_template('404.html'), 404
+	return render_template('except/404.html'), 404
+
+@app.errorhandler(405)
+def method_not_allow(error) :
+	return render_template('except/405.html'), 405
 
 import myApp.views
 import myApp.controllers

@@ -9,6 +9,9 @@
 		$(document).ready(function() {
 			$(".imgLiquidFill").imgLiquid();
 			$('.content').height(window.innerHeight);
+			$("#index-join").click(function() {
+				$("#join-modal").modal("show"); 
+			});
 		});
 
 		$(window).resize(function() {
@@ -55,6 +58,6 @@
 		<div class = "intro">
 			<div class="start welcome">Welcome to sCloud Biz Club</div>
 			<h1>Everyone can use this sCloud Biz</h1>
-			<div class="start"><a class = "btn btn-custom" href = "{{ url_for('join') }}">Join</a></div>
+			<div class="start"><a class = "btn btn-custom" href = "#" id = "index-join">Join</a></div>
 		</div>
 {% endblock %}
