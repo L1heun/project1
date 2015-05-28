@@ -42,6 +42,9 @@ footer {
 	clear: both;
 	color : #fff;
 	text-align : center;
+	position : absolute;
+	bottom : 0;
+	width : 100%;
 }
 
 .container {
@@ -62,4 +65,9 @@ a {
 	text-align:center;
 	vertical-align:middle;
 	font-size:200%;
+}
+
+table tr:hover td {
+	background-color : #eee;
+	cursor : pointer;
 }

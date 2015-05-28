@@ -48,3 +48,10 @@ aside {
 	margin-left: 1px;
 	float : left;
 }
+
+.box {
+	text-align : center;
+	width : 100%;
+	padding : 10px;
+	border : 2px dotted #0B85A1;
+}
