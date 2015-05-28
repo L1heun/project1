@@ -28,3 +28,6 @@ var/
 
 # media
 myApp/static/media/*
+
+# SQL
+sql
