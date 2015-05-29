@@ -49,26 +49,28 @@
 		</tr>
 	</thead>
 	<tbody>
-		{% for i in data %}
-		<tr onclick = 'preview({{ i.get("fileIdx") }})' id = 'file_{{ i.get('fileIdx') }}'>
-			<td>
-				<div class = "imgLiquidFill imgLiquid imgLiquid_bgSize imgLiquid_ready thumb_nail">
-					{% if i.get('fileType') == 'file' %}
-						<img src = '{{ url_for('static', filename='res/file.png') }}'>
-					{% elif i.get('fileType') == 'music' %}
-						<img src = '{{ url_for('static', filename='res/music.png') }}'>
-					{% elif i.get('fileType') == 'movie' %}
-						<img src = '{{ url_for('static', filename='res/movie.png') }}'>
-					{% elif i.get('fileType') == 'image' %}
-						<img src = '{{ url_for('static', filename=i.get('filePath')) }}'>
-					{% endif %}
-				</div>
-				<p style = 'float : left; padding-top : 5px;'>{{ i.get('fileOriginName') }}</p>
-			</td>
-			<td style = "padding-top : 15px;" class="file_type">{{ i.get('fileType') }}</td>
-			<td style = "padding-top : 15px;">{{ i.get('fileInitDate')}}</td>
-		</tr>
-		{% endfor %}
+		{% if data %}
+			{% for i in data %}
+			<tr onclick = 'preview({{ i.get("fileIdx") }})' id = 'file_{{ i.get('fileIdx') }}'>
+				<td>
+					<div class = "imgLiquidFill imgLiquid imgLiquid_bgSize imgLiquid_ready thumb_nail">
+						{% if i.get('fileType') == 'file' %}
+							<img src = '{{ url_for('static', filename='res/file.png') }}'>
+						{% elif i.get('fileType') == 'music' %}
+							<img src = '{{ url_for('static', filename='res/music.png') }}'>
+						{% elif i.get('fileType') == 'movie' %}
+							<img src = '{{ url_for('static', filename='res/movie.png') }}'>
+						{% elif i.get('fileType') == 'image' %}
+							<img src = '{{ url_for('static', filename=i.get('filePath')) }}'>
+						{% endif %}
+					</div>
+					<p style = 'float : left; padding-top : 5px;'>{{ i.get('fileOriginName') }}</p>
+				</td>
+				<td style = "padding-top : 15px;" class="file_type">{{ i.get('fileType') }}</td>
+				<td style = "padding-top : 15px;">{{ i.get('fileInitDate')}}</td>
+			</tr>
+			{% endfor %}
+		{% endif %}
 	</tbody>
 </table>
 </div>

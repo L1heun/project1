@@ -14,7 +14,6 @@ MUSIC_EXT = ['mp3', 'wma', 'wmv', 'mid']
 MOVIE_EXT = ['mp4', 'avi', 'mpeg', 'mov', 'flv']
 IMAGE_EXT = ['jpg', 'bit', 'png', 'ai', 'psd', 'svg']
 
-
 def getFileList() :
 	if 'userToken' in session :
 		entries = list()
@@ -124,7 +123,6 @@ def uploadFile(files) :
 	return json.dumps({"result" : -1})
 
 
-
 def downloadFile(fileIdx) :
 	if 'userToken' in session :
 		userIdx = model.getAccountByToken(session['userToken'])[0][0]
@@ -132,8 +130,8 @@ def downloadFile(fileIdx) :
 		result = model.query(sql)
 		if result :
 			return send_file(result[0][1], as_attachment = True, attachment_filename = result[0][0]), 200
-		return "No Data", 404
-	return "Permission Denied", 401
+		return "<script> alert('No Data'); history.back(-1); </script>", 404
+	return "<script> alert('Permission Denied'); history.back(-1); </script>", 401
 
 
 
