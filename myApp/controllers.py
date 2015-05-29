@@ -115,6 +115,8 @@ def uploadFile(files) :
 			sql = "INSERT INTO folder(user_idx, folder_name, folder_init_date) "
 			sql += "VALUES (%s, 'index', '%s')" % (userIdx, nTime)
 			model.query(sql)
+			sql = "SELECT folder_idx FROM folder WHERE user_idx = %s order by folder_idx asc" % (userIdx)
+			result = model.query(sql)
 		sql = "INSERT INTO files(user_idx, folder_idx, file_origin_name, file_path, file_type, file_is_shared, folder_init_date)"
 		sql += "VALUES (%s, %s, '%s', '%s', '%s', %s, '%s')" % (userIdx, result[0][0], fileName, dbFilePath, fileExt, 0, nTime)
 		result = model.query(sql)
