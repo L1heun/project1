@@ -4,7 +4,6 @@ from werkzeug.contrib.fixers import ProxyFix
 app = Flask(__name__)
 app.config.from_object('config')
 app.wsgi_app = ProxyFix(app.wsgi_app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sCloud:sCloudBiz@localhost/scloud'
 
 @app.errorhandler(404)
 def not_found(error) :
