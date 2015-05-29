@@ -55,3 +55,6 @@ aside {
 	padding : 10px;
 	border : 2px dotted #0B85A1;
 }
+.non .btn-primary {
+	width : 50%;
+}

@@ -31,7 +31,6 @@ def getFileList() :
 				entry['fileType'] = i[3]
 				entry['fileInitDate'] = i[4].strftime("%Y/%m/%d %H시  %M분")
 				entry['filePath'] = i[5].split("/", 1)[1]
-				print i
 				entries.append(entry)
 			return entries
 		return None
@@ -107,7 +106,7 @@ def uploadFile(files) :
 		else :
 			fileExt = 'file'
 		fileName = secure_filename(files.filename)
-		filePath = os.path.join(folder, str(int(time.time())))
+		filePath = os.path.join(folder, str(int(time.time())) + fileName)
 		dbFilePath = filePath.split("/", 1)[1]
 		files.save(filePath)
 		nTime = datetime.datetime.fromtimestamp(time.time())

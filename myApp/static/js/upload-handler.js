@@ -92,30 +92,41 @@ function sendFileToServer(fileIdx, file) {
 		type : "POST",
 		xhr : function () {
 			var xhr = new window.XMLHttpRequest();
+			console.log("XHR");
+			console.log(xhr);
 			//Download progress
+			if (xhr.upload) {
+				console.log("asdF");
+			}
 			xhr.addEventListener("progress", function (evt) {
 				if (evt.lengthComputable) {
 					var percentComplete = evt.loaded / evt.total;
 					var percent = Math.round(percentComplete * 100) + "%"
-					$("#uploadFile" + fileIdx).find(".progress .progress-bar").css("width", percent);
-					$("#uploadFile" + fileIdx).find(".progress .progress-bar").text(percent);
+					// $("#uploadFile" + fileIdx).find(".progress .progress-bar").css("width", percent);
+					// $("#uploadFile" + fileIdx).find(".progress .progress-bar").text(percent);
+					$("#uploadFile" + fileIdx + " .progress .progress-bar").css("width", percent);
+					$("#uploadFile" + fileIdx + " .progress .progress-bar").text(percent);
 				}
 			}, false);
 			return xhr;
 		},
 		beforeSend : function () {
-			$("#uploadFile" + fileIdx).find(".status").text("Waiting");
+			// $("#uploadFile" + fileIdx).find(".status").text("Waiting");
+			$("#uploadFile" + fileIdx + " .status").text("Waiting");
+			console.log("beforeSend");
 		},
 		complete : function () {
-			$("#uploadFile" + fileIdx).find(".status").text("Success");
+			$("#uploadFile" + fileIdx + " .status").text("Success");
+			console.log("complete");
 		},
 		success : function (json) {
-			$("#uploadFile" + fileIdx).find(".status").text("Sending");
+			$("#uploadFile" + fileIdx + " .status").text("Sending");
+			console.log("success");
 		},
 		error : function (xhr, ajaxOptions, thrownError) {
-			// console.log("반환 : " + xhr.responseText);
-			// console.log("에러로그 : " + thrownError);
-			$("#uploadFile" + fileIdx).find(".status").text("Error");
+			console.log("반환 : " + xhr.responseText);
+			console.log("에러로그 : " + thrownError);
+			$("#uploadFile" + fileIdx + " .status").text("Error");
 			$("#uploadFile" + fileIdx).find(".progress .progress-bar").removeClass("progress-bar-info").addClass("progress-bar-danger");
 		}
 	});

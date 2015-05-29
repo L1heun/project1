@@ -16,8 +16,6 @@
 			$("#file-upload").click(function() {
 				$('#file-modal').modal('show');
 			})
-
-			console.log("{{ data }}");
 		});
 		$(window).resize(function() {
 			$('.content').height(window.innerHeight - $('header').height() - $('footer').height() - 100);
@@ -28,11 +26,12 @@
 {% block side %}
 	<div class = 'file-list'>
 		<p class = 'nav-header'>메뉴 바로보기</p>
-		<i class="fa fa-file fa-4"> 파일</i>
-		<i class="fa fa-file-image-o"> 이미지</i>
-		<i class="fa fa-file-video-o"> 동영상</i>
-		<i class="fa fa-share-alt"> 공유 <span class="badge">0</span></i>
-		<i class="fa fa-paperclip"> 링크 <span class="badge">0</span></i>
+		<i class="fa fa-font fa-4" onclick = "menuBarOff()">모두보기</i>
+		<i class="fa fa-file fa-4" onclick = "menuBar('file')"> 파일</i>
+		<i class="fa fa-file-image-o" onclick = "menuBar('image')"> 이미지</i>
+		<i class="fa fa-file-video-o" onclick = "menuBar('movie')"> 동영상</i>
+		<i class="fa fa-share-alt" onclick = "alert('준비중입니다')"> 공유 <span class="badge">0</span></i>
+		<i class="fa fa-paperclip" onclick = "alert('준비중입니다')"> 링크 <span class="badge">0</span></i>
 	</div>
 	<div class = 'nav-custom'>
 		<p class = 'nav-header'>다음으로 바로가기</p>
@@ -51,7 +50,7 @@
 	</thead>
 	<tbody>
 		{% for i in data %}
-		<tr onclick = 'preview({{ i.get("fileIdx") }})'>
+		<tr onclick = 'preview({{ i.get("fileIdx") }})' id = 'file_{{ i.get('fileIdx') }}'>
 			<td>
 				<div class = "imgLiquidFill imgLiquid imgLiquid_bgSize imgLiquid_ready thumb_nail">
 					{% if i.get('fileType') == 'file' %}
@@ -66,7 +65,7 @@
 				</div>
 				<p style = 'float : left; padding-top : 5px;'>{{ i.get('fileOriginName') }}</p>
 			</td>
-			<td style = "padding-top : 15px;">{{ i.get('fileType') }}</td>
+			<td style = "padding-top : 15px;" class="file_type">{{ i.get('fileType') }}</td>
 			<td style = "padding-top : 15px;">{{ i.get('fileInitDate')}}</td>
 		</tr>
 		{% endfor %}
