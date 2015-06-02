@@ -135,12 +135,27 @@ def downloadFile(fileIdx) :
 		return "<script> alert('No Data'); history.back(-1); </script>", 404
 	return "<script> alert('Permission Denied'); history.back(-1); </script>", 401
 
-
-
-
-
-
-
+def searchFile(keyword) :
+	if 'userToken' in session :
+		entries = list()
+		userIdx = model.getAccountByToken(session['userToken'])[0][0]
+		sql = "SELECT file_idx, folder_idx, file_origin_name, file_type, folder_init_date, file_path "
+		sql += "FROM files WHERE user_idx = %s " % (userIdx)
+		sql += "AND file_origin_name like '%" + keyword +"%' "
+		sql += "OR file_type like '%" + keyword + "%'"
+		result = model.query(sql)
+		if result :
+			for i in result :
+				entry = dict()
+				entry['fileIdx'] = i[0]
+				entry['folderIdx'] = i[1]
+				entry['fileOriginName'] = i[2]
+				entry['fileType'] = i[3]
+				entry['fileInitDate'] = i[4].strftime("%Y/%m/%d %H시  %M분")
+				entry['filePath'] = i[5].split("/", 1)[1]
+				entries.append(entry)
+			return entries
+		return None
 
 
 

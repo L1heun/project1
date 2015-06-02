@@ -68,6 +68,14 @@ def fileUpload() :
 	result = control.uploadFile(files)
 	return json.dumps(result)
 
+@app.route("/api/ver-1/file/search", methods = ['POST'])
+def fileSearch() :
+	keyword = request.form['keyword']
+	result = control.searchFile(keyword)
+	if result :
+		return json.dumps(result), 200
+	return "Error", 404
+
 @app.route('/home')
 def home() :
 	result = control.getFileList()

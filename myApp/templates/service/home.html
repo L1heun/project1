@@ -1,3 +1,9 @@
+<!--
+
+	버그 : 아이템 클릭 후 File Upload 클릭 시 modal-body 삭제됨
+	추가 : Drag and Drop 외에 버튼추가
+
+-->
 {% extends "layout/born.html" %}
 {% block title %} sColud biz - Home{% endblock %}
 {% block head %}
@@ -10,7 +16,7 @@
 	<script>
 		$(document).ready(function() {
 			$(".imgLiquidFill").imgLiquid();
-			$('.content').height(window.innerHeight);
+			$('.content').height(window.innerHeight - $('header').height() - $('footer').height() - 100);
 			$(".table").parent().css("max-height", $("article.content").height());
 
 			$("#file-upload").click(function() {
@@ -74,5 +80,9 @@
 	</tbody>
 </table>
 </div>
+<form>
+	<input type="file" style="display : none;" id="file-bucket">
+</form>
 {% include "service/preview.html" %}
+{% include "service/search.html" %}
 {% endblock %}

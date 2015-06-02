@@ -1,5 +1,25 @@
 $(document).ready(function() {
 	f = 0;
+	$("#btn-file-upload").click(function(e) {
+		e.preventDefault();
+		if (f == 1) {
+			$("#file-bucket").trigger("click");
+			f = 0;
+		} else {
+			f +=1;
+		}
+	});
+	$("#file-bucket").on("change", function(e) {
+		if (f == 1) {
+			var file = this.files[0];
+			handleFileUpload(file, 2);
+			console.log(handleFileUpload);
+			f = 0;
+		} else {
+			f +=1;
+		}
+	});
+
 	var obj = $("#dragandrophandler");
 	obj.on('dragenter', function (e) {
 		e.stopPropagation();
@@ -18,23 +38,26 @@ $(document).ready(function() {
 		$(this).css('border', '2px dotted #0B85A1');
 		if (f == 1) {
 			var files = e.originalEvent.dataTransfer.files;
-			handleFileUpload(files,obj);
+			handleFileUpload(files, 1);
 			f = 0;
 		} else {
 			f +=1;
 		}
 	});
+
 	$(document).on('dragenter', function (e) 
 	{
 		e.stopPropagation();
 		e.preventDefault();
 	});
+
 	$(document).on('dragover', function (e) 
 	{
 		e.stopPropagation();
 		e.preventDefault();
 		obj.css('border', '2px dotted #0B85A1');
 	});
+
 	$(document).on('drop', function (e) 
 	{
 		e.stopPropagation();
@@ -67,12 +90,18 @@ function fileUploadStatus(id, status, message) {
 	$('#uploadFile' + id).find('span.status').html(message).addClass(status);
 };
 
-function handleFileUpload(files,obj) {
-	for (var i = 0; i < files.length; i++)  {
+function handleFileUpload(files, type) {
+	if(type == 1) {
+		for (var i = 0; i < files.length; i++)  {
+			console.log(i);
 			fileIdx += 1;
-			// fd.append('file', files[i]);
 			addFile(fileIdx, files[i]);
 			sendFileToServer(fileIdx, files[i]);
+		}	
+	} else if(type == 2) {
+		fileIdx += 1;
+		addFile(fileIdx, files);
+		sendFileToServer(fileIdx, files);
 	}
 }
 

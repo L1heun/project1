@@ -48,7 +48,6 @@ aside {
 	margin-left: 1px;
 	float : left;
 }
-
 .box {
 	text-align : center;
 	width : 100%;
@@ -57,4 +56,10 @@ aside {
 }
 .non .btn-primary {
 	width : 50%;
+}
+#preview-modal .modal-body *{
+	max-height : 600px;
+}
+.popover-content {
+	padding : 0;
 }
